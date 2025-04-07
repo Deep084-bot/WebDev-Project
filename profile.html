@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="/frontend/styles/profile.css">
+</head>
+<body>
+    <div class="parent-container">
+        <div class="profile">
+            <form>
+                <h1>PROFILE PAGE</h1>
+                <label for="un">NAME</label>
+                <input type="text" name="un" id="un">
+                Gender:
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="male">
+                <label for="female">Female</label>
+                <input type="radio" name="gender" id="female">
+                <label for="other">Other</label>
+                <input type="radio" name="gender" id="other">
+                <label for="bd">Your Birthdate:</label>
+                <input type="date" name="bd" id="bd">
+                <label for="imageInput">Upload your profile picture:</label>
+                <input type="file" id="imageInput" name="image" accept="image/*">
+                <label for="bio">About yourself:</label>
+                <textarea style="width: 80%; max-width: 80%; overflow: auto;"></textarea>
+                <button type="submit">Submit</button>
+                <button id="continueButton" type="button">Continue to Login Page</button>
+            </form>
+            <!-- New Continue Button -->
+            
+        </div>
+    </div>
+    <script src="/frontend/scripts/profile.js"></script>
+    <script>
+        // Add event listener for the new button
+        document.getElementById('continueButton').addEventListener('click', () => {
+            console.log("Continue button clicked!"); // Debugging
+            window.location.href = "http://127.0.0.1:3000/frontend/pages/login.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/frontend/styles/login.css">
+</head>
+
+<body>
+    <div class="parent-container">
+        <div class="login">
+            <form onsubmit="handleAuth(event, true)">
+                <h1>LOG IN</h1>
+                <label for="un">USERNAME</label>
+                <input type="text" id="un" placeholder="Enter Username">
+                <label for="pw">PASSWORD</label>
+                <input type="password" id="pw" placeholder="Enter Password">
+                <button type="submit">Login</button>
+                <p class="toggle" onclick="toggleForm(true)">Don't have an account? Register</p>
+            </form>
+        </div>
+    </div>
+    <script src="/frontend/scripts/loginRegister.js"></script>
+    <script>
+        document.getElementById("login-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username-input").value.trim();
+            const password = document.getElementById("password-input").value.trim();
+
+            if (!username || !password) {
+                alert("Please enter a username and password.");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://localhost:5000/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (response.ok) {
+                    console.log("✅ Login successful for:", username);
+                    localStorage.setItem("username", username);  // ✅ Ensure username is stored
+                    window.location.href = "profile.html";  // Redirect after login
+                } else {
+                    console.error("❌ Login failed");
+                    alert("Invalid credentials!");
+                }
+            } catch (error) {
+                console.error("❌ Error during login:", error);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/frontend/styles/login.css">
+</head>
+<body>
+    <div class="parent-container">
+        <div class="login">
+            <form onsubmit="handleAuth(event, false)">
+                <h1>SIGN UP</h1>
+                <label for="un">USERNAME</label>
+                <input type="text" id="un" placeholder="Enter Username">
+                <label for="pw">PASSWORD</label>
+                <input type="password" id="pw" placeholder="Enter Password">
+                <label for="cp">CONFIRM PASSWORD</label>
+                <input type="password" id="cp" placeholder="Confirm Password">
+                <button type="submit">Register</button>
+                <p class="toggle" onclick="toggleForm(false)">Already have an account? Login</p>
+            </form>
+        </div>
+    </div>
+    <script src="/frontend/scripts/loginRegister.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media Feed</title>
+  <link rel="stylesheet" href="/frontend/styles/mainPage.css">
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const elements = document.querySelectorAll('header, footer, .sidebar, .post-form, .post');
+      elements.forEach(el => el.classList.toggle('dark-mode'));
+    }
+
+    function updateWelcomeText() {
+      const username = localStorage.getItem('username') || 'User';
+      document.getElementById('welcome-message').textContent = `Welcome, ${username}!`;
+    }
+
+    function navigateTo(page) {
+      if (page === 'home') {
+        window.location.href = '/frontend/pages/mainPage.html';
+      } else if (page === 'profile') {
+        window.location.href = '/frontend/pages/profile.html';
+      } else if (page === 'settings') {
+        window.location.href = '/frontend/pages/settings.html';
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('username');
+      window.location.href = '/frontend/pages/login.html';
+    }
+
+    window.onload = () => {
+      updateWelcomeText();
+      fetchAndRenderPosts(); // Load posts and show the form
+    };
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Social Media Feed</div>
+    <div class="user-info">
+      <span id="welcome-message">Welcome, User!</span>
+      <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+    </div>
+    <button class="logout" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+        <li><a href="#" onclick="navigateTo('profile')">Profile</a></li>
+        <li><a href="#" onclick="navigateTo('settings')">Settings</a></li>
+      </ul>
+    </aside>
+
+    <main class="feed" id="feed">
+      <!-- Post form and posts will be rendered here by JS -->
+    </main>
+  </div>
+
+  <main class="feed" id="feed">
+    <!-- Post Form -->
+    <div class="post-form">
+      <textarea id="post-content" placeholder="What's on your mind?" rows="3"></textarea>
+      <input type="file" id="image-input" accept="image/*">
+      <button class="post-button" onclick="addPost()">Post</button>
+    </div>
+  
+    <!-- Posts will be dynamically rendered here by JS -->
+    <div id="posts-container"></div>
+  </main>
+  
+
+  <footer>
+    <p>&copy; 2025 Social Media Feed. All rights reserved.</p>
+  </footer>
+
+  <script src="/frontend/scripts/mainPage.js"></script>
+</body>
+
+</html>

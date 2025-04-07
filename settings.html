@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="/frontend/styles/settings.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Social Media</div>
+        <div class="user-info">
+            <span id="username">Welcome, User</span>
+            <button id="logout">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="mainPage.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="settings.html" class="active">Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="settings-section">
+            <h2>Settings</h2>
+
+            <!-- Dark Mode Toggle -->
+            <div class="setting">
+                <label>Dark Mode</label>
+                <input type="checkbox" id="dark-mode">
+            </div>
+
+            <!-- Change Username -->
+            <div class="setting">
+                <label>Change Username</label>
+                <input type="text" id="new-username" placeholder="Enter new username">
+                <button id="save-username">Save</button>
+            </div>
+
+            <!-- Change Password -->
+            <div class="setting">
+                <label>Change Password</label>
+                <input type="password" id="old-password" placeholder="Old Password">
+                <input type="password" id="new-password" placeholder="New Password">
+                <button id="save-password">Save</button>
+            </div>
+
+            <!-- Delete Account -->
+            <div class="setting danger">
+                <button id="delete-account">Delete Account</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="/frontend/scripts/settings.js"></script>
+</body>
+</html>
